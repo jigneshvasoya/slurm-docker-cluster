@@ -12,7 +12,7 @@ RUN apt -y update && apt -y install \
            bash-completion
 
 COPY slurm.conf /etc/slurm/slurm.conf
-COPY slurmdbd.conf /etc/slurm/slurmdbd.conf
+#COPY slurmdbd.conf /etc/slurm/slurmdbd.conf
 
 ADD gosu-amd64 /usr/local/bin/gosu
 RUN chmod +x /usr/local/bin/gosu \
@@ -23,4 +23,4 @@ RUN service munge start
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
-CMD ["slurmdbd"]
+CMD ["slurmctld"]
